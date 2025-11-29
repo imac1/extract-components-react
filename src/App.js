@@ -1,4 +1,13 @@
 import { recipes } from './data.js';
+function IngredientsList({ ingredients }) {
+  return (
+    <ul>
+      {ingredients.map(ingredient => (
+        <li key={ingredient}>{ingredient}</li>
+      ))}
+    </ul>
+  );
+}
 
 export default function RecipeList() {
   return (
@@ -7,13 +16,9 @@ export default function RecipeList() {
       {recipes.map(recipe =>
         <div key={recipe.id}>
           <h2>{recipe.name}</h2>
-          <ul>
-            {recipe.ingredients.map(ingredient =>
-              <li key={ingredient}>
-                {ingredient}
-              </li>
-            )}
-          </ul>
+      <IngredientsList ingredients={recipe.ingredients}/>
+          
+       
         </div>
       )}
     </div>
